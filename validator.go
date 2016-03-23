@@ -454,7 +454,7 @@ func IsISO3166Alpha3(str string) bool {
 
 // IsDNSName will validate the given string as a DNS name
 func IsDNSName(str string) bool {
-	if str == "" || len(strings.Replace(str,".","",-1)) > 255 {
+	if str == "" || len(strings.Replace(str, ".", "", -1)) > 255 {
 		// constraints already violated
 		return false
 	}
@@ -498,7 +498,7 @@ func IsIPv6(str string) bool {
 
 // IsHost checks if the string is a valid IP (both v4 and v6) or a valid DNS name
 func IsHost(str string) bool {
-	return  IsIP(str) || IsDNSName(str)
+	return IsIP(str) || IsDNSName(str)
 }
 
 // IsMAC check if a string is valid MAC address.
@@ -635,6 +635,38 @@ func StringLength(str string, params ...string) bool {
 	return false
 }
 
+// Max checks string's max length or max numbers value
+func Max(str string, params ...string) bool {
+
+	if len(params) == 1 {
+		strLength := utf8.RuneCountInString(str)
+		max, _ := ToInt(params[0])
+		return strLength <= int(max)
+	} else if len(params) == 2 {
+		max, _ := ToInt(params[0])
+		intnum, _ := ToInt(str)
+		return int(intnum) <= int(max)
+	}
+
+	return false
+}
+
+// Min check string's min length or min numbers value
+func Min(str string, params ...string) bool {
+
+	if len(params) == 1 {
+		strLength := utf8.RuneCountInString(str)
+		min, _ := ToInt(params[0])
+		return strLength >= int(min)
+	} else if len(params) == 2 {
+		min, _ := ToInt(params[0])
+		intnum, _ := ToInt(str)
+		return int(intnum) >= int(min)
+	}
+
+	return false
+}
+
 // Contains returns whether checks that a comma-separated list of options
 // contains a particular substr flag. substr must be surrounded by a
 // string boundary or commas.
@@ -730,16 +762,33 @@ func typeCheck(v reflect.Value, t reflect.StructField) (bool, error) {
 							if result := validatefunc(field, ps[1:]...); !result && !negate || result && negate {
 								var err error
 								if !negate {
-									err = fmt.Errorf("%s does not validate as %s", field, tagOpt)
+									err = fmt.Errorf(" does not validate by '%s' tag", key)
 								} else {
-									err = fmt.Errorf("%s does validate as %s", field, tagOpt)
+									err = fmt.Errorf(" does validate by '%s' tag", key)
 								}
 								return false, Error{t.Name, err}
 							}
-						default:
+						case reflect.Bool:
 							//Not Yet Supported Types (Fail here!)
 							err := fmt.Errorf("Validator %s doesn't support kind %s", tagOpt, v.Kind())
 							return false, Error{t.Name, err}
+						default:
+							if key == "min" || key == "max" {
+								field := fmt.Sprint(v) // make value into string, then validate with regex
+								if result := validatefunc(field, ps[1], "~"); !result && !negate || result && negate {
+									var err error
+									if !negate {
+										err = fmt.Errorf(" does not validate by '%s' tag", key)
+									} else {
+										err = fmt.Errorf(" does validate by '%s' tag", key)
+									}
+									return false, Error{t.Name, err}
+								}
+							} else {
+								//Not Yet Supported Types (Fail here!)
+								err := fmt.Errorf("Validator %s doesn't support kind %s", tagOpt, v.Kind())
+								return false, Error{t.Name, err}
+							}
 						}
 					}
 				}
