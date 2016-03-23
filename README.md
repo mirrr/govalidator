@@ -33,6 +33,8 @@ func BlackList(str, chars string) string
 func ByteLength(str string, params ...string) bool
 func StringLength(str string, params ...string) bool
 func StringMatches(s string, params ...string) bool
+func Min(str string, params ...string) bool
+func Max(str string, params ...string) bool
 func CamelCaseToUnderscore(str string) string
 func Contains(str, substring string) bool
 func Count(array []interface{}, iterator ConditionIterator) int
@@ -237,14 +239,17 @@ Here is a list of available validators for struct fields (validator - used funct
 Validators with parameters
 
 ```go
-"length(min|max)": ByteLength,
-"matches(pattern)": StringMatches,
+"length(min|max)"       : ByteLength,
+"stringlength(min|max)" : StringLength,
+"matches(pattern)"      : StringMatches,
+"min(min)"              : Min,
+"max(max)"              : Max,
 ```
 
 And here is small example of usage:
 ```go
 type Post struct {
-	Title    string `valid:"alphanum,required"`
+	Title    string `valid:"alphanum,required,max(80)"`
 	Message  string `valid:"duck,ascii"`
 	AuthorIP string `valid:"ipv4"`
 	Date     string `valid:"-"`
