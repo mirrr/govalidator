@@ -60,7 +60,7 @@ func TestIsAlpha(t *testing.T) {
 	for _, test := range tests {
 		actual := IsAlpha(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsAlpha(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsAlpha(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -120,7 +120,7 @@ func TestIsUTFLetter(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUTFLetter(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUTFLetter(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUTFLetter(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -181,7 +181,7 @@ func TestIsAlphanumeric(t *testing.T) {
 	for _, test := range tests {
 		actual := IsAlphanumeric(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsAlphanumeric(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsAlphanumeric(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -240,7 +240,7 @@ func TestIsUTFLetterNumeric(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUTFLetterNumeric(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUTFLetterNumeric(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUTFLetterNumeric(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -301,7 +301,7 @@ func TestIsNumeric(t *testing.T) {
 	for _, test := range tests {
 		actual := IsNumeric(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsNumeric(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsNumeric(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -359,7 +359,7 @@ func TestIsUTFNumeric(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUTFNumeric(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUTFNumeric(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUTFNumeric(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -422,7 +422,7 @@ func TestIsUTFDigit(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUTFDigit(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUTFDigit(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUTFDigit(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -453,7 +453,7 @@ func TestIsLowerCase(t *testing.T) {
 	for _, test := range tests {
 		actual := IsLowerCase(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsLowerCase(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsLowerCase(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -484,7 +484,7 @@ func TestIsUpperCase(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUpperCase(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUpperCase(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUpperCase(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -521,7 +521,7 @@ func TestIsInt(t *testing.T) {
 	for _, test := range tests {
 		actual := IsInt(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsInt(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsInt(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -552,7 +552,7 @@ func TestIsEmail(t *testing.T) {
 	for _, test := range tests {
 		actual := IsEmail(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsEmail(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsEmail(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -571,7 +571,7 @@ func TestIsURL(t *testing.T) {
 		{"foobar.com", true},
 		{"http://foobar.coffee/", true},
 		{"http://foobar.中文网/", true},
-    {"http://foobar.org/", true},
+		{"http://foobar.org/", true},
 		{"http://foobar.ORG", true},
 		{"http://foobar.org:8080/", true},
 		{"ftp://foobar.ru/", true},
@@ -631,7 +631,7 @@ func TestIsURL(t *testing.T) {
 	for _, test := range tests {
 		actual := IsURL(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsURL(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsURL(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -644,7 +644,7 @@ func TestIsRequestURL(t *testing.T) {
 		expected bool
 	}{
 		{"", false},
-		{"http://foo.bar#com", true},
+		{"http://foo.bar#com", false},
 		{"http://foobar.com", true},
 		{"https://foobar.com", true},
 		{"foobar.com", false},
@@ -667,21 +667,21 @@ func TestIsRequestURL(t *testing.T) {
 		{"rtmp://foobar.com", true},
 		{"http://www.foo_bar.com/", true},
 		{"http://localhost:3000/", true},
-		{"http://foobar.com#baz=qux", true},
+		{"http://foobar.com#baz=qux", false},
 		{"http://foobar.com/t$-_.+!*\\'(),", true},
 		{"http://www.foobar.com/~foobar", true},
 		{"http://www.-foobar.com/", true},
 		{"http://www.foo---bar.com/", true},
 		{"mailto:someone@example.com", true},
 		{"irc://irc.server.org/channel", true},
-		{"irc://#channel@network", true},
+		{"irc://#channel@network", false},
 		{"/abs/test/dir", false},
 		{"./rel/test/dir", false},
 	}
 	for _, test := range tests {
 		actual := IsRequestURL(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsRequestURL(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsRequestURL(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -694,7 +694,7 @@ func TestIsRequestURI(t *testing.T) {
 		expected bool
 	}{
 		{"", false},
-		{"http://foo.bar#com", true},
+		{"http://foo.bar#com", false},
 		{"http://foobar.com", true},
 		{"https://foobar.com", true},
 		{"foobar.com", false},
@@ -716,21 +716,21 @@ func TestIsRequestURI(t *testing.T) {
 		{"rtmp://foobar.com", true},
 		{"http://www.foo_bar.com/", true},
 		{"http://localhost:3000/", true},
-		{"http://foobar.com#baz=qux", true},
+		{"http://foobar.com#baz=qux", false},
 		{"http://foobar.com/t$-_.+!*\\'(),", true},
 		{"http://www.foobar.com/~foobar", true},
 		{"http://www.-foobar.com/", true},
 		{"http://www.foo---bar.com/", true},
 		{"mailto:someone@example.com", true},
 		{"irc://irc.server.org/channel", true},
-		{"irc://#channel@network", true},
+		{"irc://#channel@network", false},
 		{"/abs/test/dir", true},
 		{"./rel/test/dir", false},
 	}
 	for _, test := range tests {
 		actual := IsRequestURI(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsRequestURI(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsRequestURI(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -765,7 +765,7 @@ func TestIsFloat(t *testing.T) {
 	for _, test := range tests {
 		actual := IsFloat(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsFloat(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsFloat(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -786,7 +786,7 @@ func TestIsHexadecimal(t *testing.T) {
 	for _, test := range tests {
 		actual := IsHexadecimal(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsHexadecimal(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsHexadecimal(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -809,7 +809,7 @@ func TestIsHexcolor(t *testing.T) {
 	for _, test := range tests {
 		actual := IsHexcolor(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsHexcolor(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsHexcolor(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -832,7 +832,7 @@ func TestIsRGBcolor(t *testing.T) {
 	for _, test := range tests {
 		actual := IsRGBcolor(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsRGBcolor(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsRGBcolor(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -850,7 +850,7 @@ func TestIsNull(t *testing.T) {
 	for _, test := range tests {
 		actual := IsNull(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsNull(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsNull(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -925,7 +925,7 @@ func TestIsJSON(t *testing.T) {
 	for _, test := range tests {
 		actual := IsJSON(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsJSON(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsJSON(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -950,7 +950,7 @@ func TestIsMultibyte(t *testing.T) {
 	for _, test := range tests {
 		actual := IsMultibyte(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsMultibyte(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsMultibyte(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -976,7 +976,7 @@ func TestIsASCII(t *testing.T) {
 	for _, test := range tests {
 		actual := IsASCII(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsASCII(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsASCII(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1003,7 +1003,7 @@ func TestIsPrintableASCII(t *testing.T) {
 	for _, test := range tests {
 		actual := IsPrintableASCII(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsPrintableASCII(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsPrintableASCII(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1028,7 +1028,7 @@ func TestIsFullWidth(t *testing.T) {
 	for _, test := range tests {
 		actual := IsFullWidth(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsFullWidth(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsFullWidth(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1052,7 +1052,7 @@ func TestIsHalfWidth(t *testing.T) {
 	for _, test := range tests {
 		actual := IsHalfWidth(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsHalfWidth(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsHalfWidth(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1080,7 +1080,7 @@ func TestIsVariableWidth(t *testing.T) {
 	for _, test := range tests {
 		actual := IsVariableWidth(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsVariableWidth(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsVariableWidth(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1105,7 +1105,7 @@ func TestIsUUID(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUUID(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUUID(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUUID(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1123,7 +1123,7 @@ func TestIsUUID(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUUIDv3(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUUIDv3(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUUIDv3(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1142,7 +1142,7 @@ func TestIsUUID(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUUIDv4(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUUIDv4(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUUIDv4(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1162,7 +1162,7 @@ func TestIsUUID(t *testing.T) {
 	for _, test := range tests {
 		actual := IsUUIDv5(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsUUIDv5(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsUUIDv5(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1187,7 +1187,7 @@ func TestIsCreditCard(t *testing.T) {
 	for _, test := range tests {
 		actual := IsCreditCard(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsCreditCard(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsCreditCard(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1237,7 +1237,7 @@ func TestIsISBN(t *testing.T) {
 	for _, test := range tests {
 		actual := IsISBN10(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsISBN10(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsISBN10(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1259,7 +1259,7 @@ func TestIsISBN(t *testing.T) {
 	for _, test := range tests {
 		actual := IsISBN13(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsISBN13(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsISBN13(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1287,7 +1287,7 @@ func TestIsDataURI(t *testing.T) {
 	for _, test := range tests {
 		actual := IsDataURI(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsDataURI(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsDataURI(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1315,7 +1315,7 @@ func TestIsBase64(t *testing.T) {
 	for _, test := range tests {
 		actual := IsBase64(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsBase64(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsBase64(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1344,7 +1344,7 @@ func TestIsISO3166Alpha2(t *testing.T) {
 	for _, test := range tests {
 		actual := IsISO3166Alpha2(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsISO3166Alpha2(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsISO3166Alpha2(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1372,7 +1372,7 @@ func TestIsISO3166Alpha3(t *testing.T) {
 	for _, test := range tests {
 		actual := IsISO3166Alpha3(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsISO3166Alpha3(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsISO3166Alpha3(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1397,7 +1397,7 @@ func TestIsIP(t *testing.T) {
 	for _, test := range tests {
 		actual := IsIP(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsIP(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsIP(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1418,7 +1418,7 @@ func TestIsIP(t *testing.T) {
 	for _, test := range tests {
 		actual := IsIPv4(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsIPv4(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsIPv4(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1439,7 +1439,7 @@ func TestIsIP(t *testing.T) {
 	for _, test := range tests {
 		actual := IsIPv6(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsIPv6(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsIPv6(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1461,7 +1461,7 @@ func TestIsPort(t *testing.T) {
 	for _, test := range tests {
 		actual := IsPort(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsPort(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsPort(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1485,9 +1485,9 @@ func TestIsDNSName(t *testing.T) {
 		{"lÖcalhost", false},
 		{"localhost.lÖcaldomain", false},
 		{"localhost.localdomain.üntern", false},
-		{"127.0.0.1",false},
-		{"[::1]",false},
-		{"localhost.localdomain.intern:65535",false},
+		{"127.0.0.1", false},
+		{"[::1]", false},
+		{"localhost.localdomain.intern:65535", false},
 		{"漢字汉字", false},
 		{"www.jubfvq1v3p38i51622y0dvmdk1mymowjyeu26gbtw9andgynj1gg8z3msb1kl5z6906k846pj3sulm4kiyk82ln5teqj9nsht59opr0cs5ssltx78lfyvml19lfq1wp4usbl0o36cmiykch1vywbttcus1p9yu0669h8fj4ll7a6bmop505908s1m83q2ec2qr9nbvql2589adma3xsq2o38os2z3dmfh2tth4is4ixyfasasasefqwe4t2ub2fz1rme.de", false},
 	}
@@ -1495,7 +1495,7 @@ func TestIsDNSName(t *testing.T) {
 	for _, test := range tests {
 		actual := IsDNSName(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsDNS(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsDNS(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1519,7 +1519,7 @@ func TestIsHost(t *testing.T) {
 	for _, test := range tests {
 		actual := IsHost(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsHost(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsHost(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -1537,7 +1537,7 @@ func TestIsDialString(t *testing.T) {
 		{"localhost.localdomain.intern:65535", true},
 		{"127.0.0.1:30000", true},
 		{"[::1]:80", true},
-		{"[1200::AB00:1234::2552:7777:1313]:22",false},
+		{"[1200::AB00:1234::2552:7777:1313]:22", false},
 		{"-localhost:1", false},
 		{"localhost.-localdomain:9090", false},
 		{"localhost.localdomain.-int:65535", false},
@@ -1549,7 +1549,7 @@ func TestIsDialString(t *testing.T) {
 	for _, test := range tests {
 		actual := IsDialString(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsDialString(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsDialString(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1570,7 +1570,7 @@ func TestIsMAC(t *testing.T) {
 	for _, test := range tests {
 		actual := IsMAC(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsMAC(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsMAC(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1599,7 +1599,7 @@ func TestFilePath(t *testing.T) {
 	for _, test := range tests {
 		actual, osType := IsFilePath(test.param)
 		if actual != test.expected || osType != test.osType {
-			t.Errorf("Expected IsFilePath(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsFilePath(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1621,7 +1621,7 @@ func TestIsLatitude(t *testing.T) {
 	for _, test := range tests {
 		actual := IsLatitude(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsLatitude(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsLatitude(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1643,7 +1643,7 @@ func TestIsLongitude(t *testing.T) {
 	for _, test := range tests {
 		actual := IsLongitude(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsLongitude(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsLongitude(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1664,7 +1664,7 @@ func TestIsSSN(t *testing.T) {
 	for _, test := range tests {
 		actual := IsSSN(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsSSN(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsSSN(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1685,7 +1685,7 @@ func TestIsMongoID(t *testing.T) {
 	for _, test := range tests {
 		actual := IsMongoID(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsMongoID(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsMongoID(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1721,7 +1721,7 @@ func TestIsSemver(t *testing.T) {
 	for _, test := range tests {
 		actual := IsSemver(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected IsSemver(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected IsSemver(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -1862,9 +1862,9 @@ func TestValidateMissingValidationDeclationStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -1885,9 +1885,9 @@ func TestFieldsRequiredByDefaultButExemptStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -1909,9 +1909,9 @@ func TestFieldsRequiredByDefaultButExemptOrOptionalStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -1950,9 +1950,9 @@ func TestStructWithCustomByteArray(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -1975,9 +1975,9 @@ func TestValidateNegationStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -1996,9 +1996,9 @@ func TestLengthStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -2021,9 +2021,9 @@ func TestStringLengthStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -2042,9 +2042,9 @@ func TestStringMatchesStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -2069,9 +2069,9 @@ func TestValidateStruct(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -2179,9 +2179,9 @@ func TestRequired(t *testing.T) {
 	for _, test := range tests {
 		actual, err := ValidateStruct(test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ValidateStruct(%v) to be %v, got %v", test.param, test.expected, actual)
 			if err != nil {
-				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
+				t.Errorf("Got Error on ValidateStruct(%v): %s", test.param, err)
 			}
 		}
 	}
@@ -2206,7 +2206,7 @@ func TestErrorByField(t *testing.T) {
 	for _, test := range tests {
 		actual := ErrorByField(err, test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ErrorByField(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ErrorByField(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -2230,28 +2230,7 @@ func TestErrorsByField(t *testing.T) {
 
 	for _, test := range tests {
 		if actual, ok := errs[test.param]; !ok || actual != test.expected {
-			t.Errorf("Expected ErrorsByField(%q) to be %v, got %v", test.param, test.expected, actual)
-		}
-	}
-
-	tests = []struct {
-		param    string
-		expected string
-	}{
-		{"Title", ";:;message;:; does not validate as length(1|10)"},
-		{"Body", ";:;message;:; does not validate as length(1|10)"},
-	}
-
-	message := &MessageWithSeveralFieldsStruct{Title: ";:;message;:;", Body: ";:;message;:;"}
-	_, err = ValidateStruct(message)
-	errs = ErrorsByField(err)
-	if len(errs) != 2 {
-		t.Errorf("There should only be 2 errors but got %v", len(errs))
-	}
-
-	for _, test := range tests {
-		if actual, ok := errs[test.param]; !ok || actual != test.expected {
-			t.Errorf("Expected ErrorsByField(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ErrorsByField(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 
@@ -2271,7 +2250,7 @@ func TestErrorsByField(t *testing.T) {
 
 	for _, test := range tests {
 		if actual, ok := errs[test.param]; !ok || actual != test.expected {
-			t.Errorf("Expected ErrorsByField(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ErrorsByField(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }
@@ -2305,7 +2284,7 @@ func TestValidateStructPointers(t *testing.T) {
 	for _, test := range tests {
 		actual := ErrorByField(err, test.param)
 		if actual != test.expected {
-			t.Errorf("Expected ErrorByField(%q) to be %v, got %v", test.param, test.expected, actual)
+			t.Errorf("Expected ErrorByField(%v) to be %v, got %v", test.param, test.expected, actual)
 		}
 	}
 }

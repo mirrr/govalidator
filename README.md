@@ -1,8 +1,6 @@
 govalidator
 ===========
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/asaskevich/govalidator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![GoDoc](https://godoc.org/github.com/asaskevich/govalidator?status.png)](https://godoc.org/github.com/asaskevich/govalidator) [![Coverage Status](https://img.shields.io/coveralls/asaskevich/govalidator.svg)](https://coveralls.io/r/asaskevich/govalidator?branch=master) [![views](https://sourcegraph.com/api/repos/github.com/asaskevich/govalidator/.counters/views.png)](https://sourcegraph.com/github.com/asaskevich/govalidator)
-[![wercker status](https://app.wercker.com/status/1ec990b09ea86c910d5f08b0e02c6043/s "wercker status")](https://app.wercker.com/project/bykey/1ec990b09ea86c910d5f08b0e02c6043)
-[![Build Status](https://travis-ci.org/asaskevich/govalidator.svg?branch=master)](https://travis-ci.org/asaskevich/govalidator)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/night-codes/govalidator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![GoDoc](https://godoc.org/github.com/night-codes/govalidator?status.svg)](https://https://pkg.go.dev/github.com/night-codes/govalidator?tab=doc) [![Coverage Status](https://img.shields.io/coveralls/night-codes/govalidator.svg)](https://coveralls.io/r/night-codes/govalidator?branch=master)
 
 A package of validators and sanitizers for strings, structs and collections. Based on [validator.js](https://github.com/chriso/validator.js).
 
@@ -10,20 +8,14 @@ A package of validators and sanitizers for strings, structs and collections. Bas
 Make sure that Go is installed on your computer.
 Type the following command in your terminal:
 
-	go get github.com/asaskevich/govalidator
+	go get github.com/night-codes/govalidator
 
 After it the package is ready to use.
 
 #### Import package in your project
 Add following line in your `*.go` file:
 ```go
-import "github.com/asaskevich/govalidator"
-```
-If you unhappy to use long `govalidator`, you can do something like this:
-```go
-import (
-	valid "github.com/asaskevich/govalidator"
-)
+import "github.com/night-codes/govalidator"
 ```
 
 #### List of functions:
