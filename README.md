@@ -1,6 +1,6 @@
 govalidator
 ===========
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/night-codes/govalidator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![GoDoc](https://godoc.org/github.com/night-codes/govalidator?status.svg)](https://https://pkg.go.dev/github.com/night-codes/govalidator?tab=doc) [![Coverage Status](https://img.shields.io/coveralls/night-codes/govalidator.svg)](https://coveralls.io/r/night-codes/govalidator?branch=master)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/night-codes/govalidator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![GoDoc](https://godoc.org/github.com/night-codes/govalidator?status.svg)](https://pkg.go.dev/github.com/night-codes/govalidator?tab=doc) [![Coverage Status](https://coveralls.io/repos/github/night-codes/govalidator/badge.svg?branch=master)](https://coveralls.io/github/night-codes/govalidator?branch=master)
 
 A package of validators and sanitizers for strings, structs and collections. Based on [validator.js](https://github.com/chriso/validator.js).
 
