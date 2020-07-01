@@ -557,6 +557,59 @@ func TestIsEmail(t *testing.T) {
 	}
 }
 
+func TestIsTime(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		param    string
+		expected bool
+	}{
+		{"", false},
+		{"02:34", true},
+		{"12:59", true},
+		{"00:00", true},
+		{"23:59", true},
+		{"10:00", true},
+		{"00:10", true},
+		{"24:00", false},
+		{"12:90", false},
+		{"00:60", false},
+	}
+	for _, test := range tests {
+		actual := IsTime(test.param)
+		if actual != test.expected {
+			t.Errorf("Expected IsTime(%v) to be %v, got %v", test.param, test.expected, actual)
+		}
+	}
+}
+
+func TestIsTimeFull(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		param    string
+		expected bool
+	}{
+		{"", false},
+		{"02:34:00", true},
+		{"12:59:20", true},
+		{"00:00:30", true},
+		{"23:59:40", true},
+		{"10:00:00", true},
+		{"00:10:00", true},
+		{"23:59:70", false},
+		{"24:00:30", false},
+		{"12:90:30", false},
+		{"00:60:30", false},
+	}
+	for _, test := range tests {
+		actual := IsTimeFull(test.param)
+		if actual != test.expected {
+			t.Errorf("Expected IsTimeFull(%v) to be %v, got %v", test.param, test.expected, actual)
+		}
+	}
+}
+
 func TestIsURL(t *testing.T) {
 	t.Parallel()
 
@@ -1782,6 +1835,7 @@ type Address struct {
 type User struct {
 	Name     string `valid:"required"`
 	Email    string `valid:"required,email"`
+	Time     string `valid:"required,time"`
 	Password string `valid:"required"`
 	Age      int    `valid:"required,numeric,@#\u0000"`
 	Home     *Address
@@ -1791,6 +1845,7 @@ type User struct {
 type UserValid struct {
 	Name     string `valid:"required"`
 	Email    string `valid:"required,email"`
+	Time     string `valid:"required,time"`
 	Password string `valid:"required"`
 	Age      int    `valid:"required"`
 	Home     *Address
@@ -2056,14 +2111,15 @@ func TestValidateStruct(t *testing.T) {
 		param    interface{}
 		expected bool
 	}{
-		{User{"John", "john@yahoo.com", "123G#678", 20, &Address{"Street", "123456"}, []Address{Address{"Street", "123456"}, Address{"Street", "123456"}}}, false},
-		{User{"John", "john!yahoo.com", "12345678", 20, &Address{"Street", "ABC456D89"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
-		{User{"John", "", "12345", 0, &Address{"Street", "123456789"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
-		{UserValid{"John", "john@yahoo.com", "123G#678", 20, &Address{"Street", "123456"}, []Address{Address{"Street", "123456"}, Address{"Street", "123456"}}}, true},
-		{UserValid{"John", "john!yahoo.com", "12345678", 20, &Address{"Street", "ABC456D89"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
-		{UserValid{"John", "", "12345", 0, &Address{"Street", "123456789"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
+		{User{"John", "john@yahoo.com", "00:00", "123G#678", 20, &Address{"Street", "123456"}, []Address{Address{"Street", "123456"}, Address{"Street", "123456"}}}, false},
+		{User{"John", "john!yahoo.com", "00:00", "12345678", 20, &Address{"Street", "ABC456D89"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
+		{User{"John", "", "00:00", "12345", 0, &Address{"Street", "123456789"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
+		{UserValid{"John", "john@yahoo.com", "00:00", "123G#678", 20, &Address{"Street", "123456"}, []Address{Address{"Street", "123456"}, Address{"Street", "123456"}}}, true},
+		{UserValid{"John", "john@yahoo.com", "24:00", "123G#678", 20, &Address{"Street", "123456"}, []Address{Address{"Street", "123456"}, Address{"Street", "123456"}}}, false},
+		{UserValid{"John", "john!yahoo.com", "23:59", "12345678", 20, &Address{"Street", "ABC456D89"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
+		{UserValid{"John", "", "23:59", "12345", 0, &Address{"Street", "123456789"}, []Address{Address{"Street", "ABC456D89"}, Address{"Street", "123456"}}}, false},
 		{nil, true},
-		{User{"John", "john@yahoo.com", "123G#678", 0, &Address{"Street", "123456"}, []Address{}}, false},
+		{User{"John", "john@yahoo.com", "23:59", "123G#678", 0, &Address{"Street", "123456"}, []Address{}}, false},
 		{"im not a struct", false},
 	}
 	for _, test := range tests {

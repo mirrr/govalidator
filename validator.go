@@ -36,6 +36,18 @@ func SetFieldsRequiredByDefault(value bool) {
 	fieldsRequiredByDefault = value
 }
 
+// IsTime  check if the string is an time in format 02:14.
+func IsTime(str string) bool {
+	// TODO uppercase letters are not supported
+	return rxTime.MatchString(str)
+}
+
+// IsTimeFull check if the string is an time in format 02:14:59.
+func IsTimeFull(str string) bool {
+	// TODO uppercase letters are not supported
+	return rxTimeFull.MatchString(str)
+}
+
 // IsEmail check if the string is an email.
 func IsEmail(str string) bool {
 	// TODO uppercase letters are not supported
