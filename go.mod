@@ -1,3 +1,3 @@
-module github.com/night-codes/govalidator/v3
+module github.com/night-codes/govalidator
 
 go 1.11
